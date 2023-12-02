@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <header>
+        <h1 id="headingUser">Service Management</h1>
+    </header>
+</head>
+<body>
+
+    <h2>Create Service</h2>
+    <form  action="/service/create" method="post" id="createForm">
+        <label for="serviceName">Service Name:</label>
+        <input type="text" id="serviceName" name="serviceName" required>
+        
+        <label for="serviceType">Service Type:</label>
+        <input type="text" id="serviceType" name="serviceType" required>
+
+        <label for="availableTimes">Available Times:</label>
+        <input type="datetime-local" id="availableTimes" name="availableTimes" required>
+       
+        <button type="submit">Create Service</button>
+    </form>
+
+
+    <h2>Edit Service</h2>
+    <form id="editForm" action="/service/edit" method="post">
+        <label for="serviceUUID">Service UUID:</label>
+        <input type="text" name="serviceUUID" id="serviceUUID" required>
+
+        <label for="editServiceName">Service Name:</label>
+        <input type="text" id="editServiceName" name="editServiceName" required>
+        
+        <label for="editServiceType">Service Type:</label>
+        <input type="text" id="editServiceType" name="editServiceType" required>
+
+        <label for="editAvailableTimes">Available Times:</label>
+        <input type="datetime-local" id="editAvailableTimes" name="editAvailableTimes" required>
+
+        <button type="submit">Edit Service</button>
+    </form>
+
+    <h2>Delete Service</h2>
+
+    <form action="/service/delete" method="post">
+        <label for="serviceUUID">Service UUID:</label>
+        <input type="text" name="serviceUUID" id="serviceUUID" required>
+        
+        <button type="submit">Delete Service</button>
+    </form>
+  
+
+
+    <script>
+        // Function to get URL parameters
+        function getParameterByName(name, url) {
+          if (!url) url = window.location.href;
+          name = name.replace(/[\[\]]/g, '\\$&');
+          var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+              results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Get and display the username from the URL
+        var username = getParameterByName('username');
+        var welcomeMessage = document.getElementById('headingUser');
+        if (username) {
+          welcomeMessage.innerHTML = 'Service Management for ' + username + '!';
+        } else {
+          welcomeMessage.innerHTML = 'Service Management';
+        }
+    </script>
+</body>
+</html>

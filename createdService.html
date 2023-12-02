@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <h1>Service data inserted successfully</h1>
+    <p>Don't forget your service ID to edit and delete your services</p>
+    <p>Service UUID: <span id="serviceUUID"><%= serviceUUID %></span></p>
+    <button onclick="goToServices()">Go to Services</button>
+    <script>
+        console.log("serviceUUID",serviceUUID)
+        console.log("document.getElementById('serviceUUID')",document.getElementById('serviceUUID'))
+        // Get the service UUID from the parameter
+        const serviceUUID = '<%= serviceUUID %>';
+
+        // Set the service UUID in the HTML
+        document.getElementById('serviceUUID').innerText = serviceUUID;
+
+        // Function to navigate to the manageServices.html page
+        function goToServices() {
+            window.location.href = '/service';
+        }
+    </script>
+</body>
+</html>

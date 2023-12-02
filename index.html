@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SamWise App</title>
+    <link rel="icon" href="\images\appLogo.png" >
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <style>
+        .image-container {
+            display: flex;
+        }
+
+        .image-container img {
+            margin-right: 10px; /* Adjust the margin as needed */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>SamWise</h1>
+        <p>We are here to help your home projects</p>
+        <button onclick="createAccount()">Create Account</button>
+        <button onclick="toggleLogin()">Login</button>
+    </header>
+  
+    <!-- Login Section -->
+    <section id="loginSection" class="loginSection" style="display: none;">
+        <form id="loginForm" action="/login" method="post" onsubmit="login(event)">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+    </section>
+
+    <!-- Features Section -->
+    <section id="featuresSection" style="display: block;">
+        <section class="greenRectangle">
+            <div class="image-container">
+                <img src="images/vetser.png" alt="vet">
+            </div>
+            <h3>Vetted Service Providers</h3>
+        </section>
+        <section class="whiteRectangle">
+            <img src="images/liveChat.png" alt="live">
+            <h2>Live Chat Support</h2>
+        </section>
+        <section class="greenRectangle2">
+            <img src="images/robust.png" alt="robust">
+            <h3>Robust Customer Reviews</h3>
+        </section>
+        <section class="whiteRectangle2">
+            <img src="images/eco.png" alt="eco">
+            <h2>Eco-Friendly</h2>
+        </section>
+        <!-- Customer Reviews Section -->
+<section id="reviewsSection" style="display: block;">
+    <h4>Customer Reviews</h4>
+
+    <div class="review">
+        <h4>John Doe</h4>
+        <p>"I am very grateful about Samwise to help for house services"</p>
+    </div>
+
+    <div class="review">
+        <h4>Jane Smith</h4>
+        <p>"Such a amazing website and amazing services!"</p>
+    </div>
+    <!-- Add more reviews as needed -->
+
+    <!-- Review Submission Form -->
+    <form id="reviewForm" action="/submit-review" method="post" onsubmit="submitReview(event)">
+        <label for="reviewerName">Your Name:</label>
+        <input type="text" id="reviewerName" name="reviewerName" required>
+
+        <label for="reviewContent">Your Review:</label>
+        <textarea id="reviewContent" name="reviewContent" rows="4" required></textarea>
+
+        <button type="submit">Submit Review</button>
+    </form>
+</section>
+    </section>
+
+    <!-- Create Account Section -->
+    <section id="creatingAccount" style="display: none;">
+        <form action="/register" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+            <button type="submit">Create Account</button>
+        </form>
+         <!-- Pricing Section -->
+        <section class="pricing">
+            <h2>Pricing</h2>
+            <div class="pricing-table">
+
+                <div class="price-card">
+                    <h2>Free Plan</h2>
+                    <p>$0/month</p>
+                    <button>Select Plan</button>
+                </div>
+
+                <div class="price-card">
+                    <h2>Basic Plan</h2>
+                    <p>$19.99/month</p>
+                    <button>Select Plan</button>
+                </div>
+
+                <div class="price-card">
+                    <h2>Pro Plan</h2>
+                    <p>$39.99/month</p>
+                    <button>Select Plan</button>
+                </div>
+            </div>
+        </section>
+    </section>
+    <!-- Footer Section -->
+    <footer class="green-footer">
+        <p>&copy; 2023 Samwise Service App. All Rights Reserved.</p>
+    </footer>
+    <script>
+      
+        function createAccount() {
+            var loginSection = document.getElementById('loginSection');
+            loginSection.style.display = 'none';
+            var featuresSection = document.getElementById('featuresSection');
+            featuresSection.style.display = 'none';
+            var creatingAccount = document.getElementById('creatingAccount');
+            creatingAccount.style.display = creatingAccount.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function manageService() {
+            window.location.href = '/service/';
+        }
+
+        function toggleLogin() {
+            var creatingAccount = document.getElementById('creatingAccount');
+            creatingAccount.style.display = 'none';
+            var featuresSection = document.getElementById('featuresSection');
+            featuresSection.style.display = 'none';
+            var loginSection = document.getElementById('loginSection');
+            loginSection.style.display = loginSection.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
